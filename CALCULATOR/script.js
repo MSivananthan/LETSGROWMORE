@@ -1,65 +1,66 @@
-const output = document.getElementById("output");
-const form = document.getElementById("calc_form");
-const operand_btns = document.querySelectorAll("button[data-type=operand]");
-const operator_btns = document.querySelectorAll("button[data-type=operator]");
+// Variables
+let currentInput = document.querySelector('.currentInput');
+let answerScreen = document.querySelector('.answerScreen');
+let buttons = document.querySelectorAll('button');
+let erasebtn = document.querySelector('#erase');
+let clearbtn = document.querySelector('#clear');
+let evaluate = document.querySelector('#evaluate');
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-});
 
-let is_operator = false;
-let equation = [];
 
-const remove_active = () => {
-  operator_btns.forEach((btn) => {
-    btn.classList.remove("active");
-  });
-};
+// Calculator Display
+let realTimeScreenValue = []
 
-operand_btns.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    remove_active();
-    if (output.value == "0") {
-      output.value = e.target.value;
-    } else if (is_operator) {
-      is_operator = false;
-      output.value = e.target.value;
-    } else if (output.value.includes(".")) {
-      output.value = output.value + "" + e.target.value.replace(".", "");
-    } else {
-      output.value = output.value + "" + e.target.value;
-    }
-  });
-});
+// To Clear
 
-operator_btns.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    remove_active();
-    e.currentTarget.classList.add("active");
+clearbtn.addEventListener("click", () => {
 
-    switch (e.target.value) {
-      case "%":
-        output.value = parseFloat(output.value) / 100;
-        break;
-      case "invert":
-        output.value = parseFloat(output.value) * -1;
-        break;
-      case "=":
-        equation.push(output.value);
-        output.value = eval(equation.join(""));
-        equation = [];
-        break;
-      default:
-        let last_item = equation[equation.length - 1];
-        if (["/", "*", "+", "-"].includes(last_item) && is_operator) {
-          equation.pop();
-          equation.push(e.target.value);
-        } else {
-          equation.push(output.value);
-          equation.push(e.target.value);
+    realTimeScreenValue = [''];
+    answerScreen.innerHTML = 0;
+    currentInput.className = 'currentInput'
+    answerScreen.className = 'answerScreen';
+    answerScreen.style.color = " rgba(150, 150, 150, 0.87)";
+})
+
+// Get value of any button clicked and display to the screen
+
+buttons.forEach((btn) => {
+
+
+    btn.addEventListener("click", () => {
+        // when clicked button is not erased button 
+        if (!btn.id.match('erase')) {
+            // To display value on btn press
+            realTimeScreenValue.push(btn.value)
+            currentInput.innerHTML = realTimeScreenValue.join('');
+
+            // To evaluate answer in real time
+            if (btn.classList.contains('num_btn')) {
+
+                answerScreen.innerHTML = eval(realTimeScreenValue.join(''));
+
+            }
+
         }
-        is_operator = true;
-        break;
-    }
-  });
-});
+
+        // When erase button is clicked
+        if (btn.id.match('erase')) {
+            realTimeScreenValue.pop();
+            currentInput.innerHTML = realTimeScreenValue.join('');
+            answerScreen.innerHTML = eval(realTimeScreenValue.join(''));
+        }
+
+        // When clicked button is evaluate button
+        if (btn.id.match('evaluate')) {
+            currentInput.className = 'answerScreen';
+            answerScreen.className = 'currentInput';
+            answerScreen.style.color = "white";
+        }
+
+        // To prevent undefined error in screen
+        if (typeof eval(realTimeScreenValue.join('')) == 'undefined') {
+            answerScreen.innerHTML = 0
+        }
+
+    })
+})
