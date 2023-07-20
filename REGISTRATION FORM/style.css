@@ -1,0 +1,73 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+   background-image: linear-gradient(to right bottom, #1d95c5, #80D0C7);
+  
+}
+
+.registration-form {
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  font: style 1px;;
+  border-radius: 0px;
+  background-color: #ffffff;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background-image: linear-gradient(to right bottom, #1d95c5, #80D0C7);
+  }
+.h2{
+  font-style: inherit;
+  color: #4CAF50;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.submit-btn {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.result-container {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+}
+
+.result-container img {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.result-container p {
+  margin-bottom: 10px;
+}
