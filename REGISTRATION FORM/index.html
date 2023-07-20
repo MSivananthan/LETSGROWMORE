@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="registration-form">
+    <h2>Registration Form</h2>
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" placeholder="Enter your first name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" placeholder="Enter your last name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="Enter your email address" required>
+    </div>
+
+    <div class="form-group">
+      <label for="profilePhoto">Profile Photo:</label>
+      <input type="file" id="profilePhoto" accept="image/*">
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" placeholder="Enter your password" required>
+    </div>
+
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+    </div>
+
+    <div class="form-group">
+      <label>Skills:</label>
+      <label><input type="checkbox" name="skills" value="java"> Java</label>
+      <label><input type="checkbox" name="skills" value="python"> Python</label>
+      <label><input type="checkbox" name="skills" value="c"> C</label>
+    </div>
+
+    <button class="submit-btn" onclick="showResult()">Submit</button>
+  </div>
+
+  <!-- Hidden container to display the result -->
+  <div class="result-container" id="result-container" style="display: none;"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
